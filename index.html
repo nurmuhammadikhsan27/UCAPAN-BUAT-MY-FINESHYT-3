@@ -313,8 +313,8 @@
             </div>
         </div>
     </footer>
-        <div style="margin-top: 30px; text-align: center;">
-    <button onclick="bukaPopupNembak()" style="
+    <div style="margin-top: 30px; text-align: center;">
+        <button onclick="bukaPopupNembak()" style="
         background-color: #ff4d94;
         color: white;
         border: none;
@@ -326,25 +326,21 @@
         box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
         cursor: pointer;
         transition: transform 0.3s ease;
-    " 
-    onmouseover="this.style.transform='scale(1.1)'" 
-    onmouseout="this.style.transform='scale(1)'">
-        KLIK INI
-    </button>
-</div>
+    " onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            KLIK INI
+        </button>
+    </div>
 
     <!-- Confetti Canvas -->
     <canvas id="confetti-canvas"></canvas>
 
-
-
-    <script src="script.js"></script>
+    <!-- Popup Nembak -->
     <div id="popupNembak" style="
         display: none; 
         position: fixed; 
         top: 0; left: 0; width: 100%; height: 100%; 
         background: rgba(0,0,0,0.8); 
-        z-index: 99999; /* Biar posisinya paling depan nutupin semua */
+        z-index: 99999;
         justify-content: center; 
         align-items: center; 
         text-align: center;
@@ -359,20 +355,22 @@
             max-width: 80%;
             width: 350px;
         ">
-            <h2 style="color: #ff4d94; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 24px;">Hai, Amalia Nurul Azkia...</h2>
+            <h2 style="color: #ff4d94; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 24px;">
+                Hai, Amalia Nurul Azkia...</h2>
             <p style="color: #333; font-family: 'Poppins', sans-serif; margin-bottom: 30px; font-size: 16px;">
                 Selama ini aku ngerasa nyaman banget sama kamu. <br><br>
                 <strong>Will you be my girlfriend? 🥺❤️</strong>
             </p>
-            
-            <div style="position: relative; height: 50px; width: 100%; display: flex; justify-content: center; gap: 20px;">
+
+            <div
+                style="position: relative; height: 50px; width: 100%; display: flex; justify-content: center; gap: 20px;">
                 <button onclick="terimaCinta()" style="
                     background: #ff4d94; color: white; border: none; 
                     padding: 10px 35px; border-radius: 20px; 
                     cursor: pointer; font-size: 18px; font-weight: bold;
                     box-shadow: 0 4px 10px rgba(255, 77, 148, 0.4);
                 ">YES</button>
-                
+
                 <button id="btnNo" onmouseover="kabur()" ontouchstart="kabur()" style="
                     background: #999; color: white; border: none; 
                     padding: 10px 35px; border-radius: 20px; 
@@ -383,37 +381,16 @@
         </div>
     </div>
 
-    <script>
-        function bukaPopupNembak() {
-            document.getElementById('popupNembak').style.display = 'flex';
-        }
+    <!-- Background Music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music/birthday-music.mp3" type="audio/mpeg">
+    </audio>
 
-        function terimaCinta() {
-            // Reaksi saat dia klik YES
-            alert("Yeyyy! Akhirnya kita jadian! I Love You Amalia! ❤️❤️❤️");
-            document.getElementById('popupNembak').style.display = 'none';
-            // Kalau mau efek ledakan confetti, biarin dia nikmatin websitenya
-        }
+    <!-- Music Toggle Button -->
+    <button id="musicToggleBtn" onclick="toggleMusic()" title="Nyalakan Musik">🔇</button>
 
-        function kabur() {
-            const btnNo = document.getElementById('btnNo');
-            
-            // Mengubah posisi tombol NO jadi absolute biar bisa terbang-terbang
-            btnNo.style.position = 'fixed';
-            
-            // Hitung batas layar biar tombolnya gak keluar layar
-            const maxX = window.innerWidth - btnNo.offsetWidth - 20;
-            const maxY = window.innerHeight - btnNo.offsetHeight - 20;
-            
-            // Bikin posisi acak
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
-            
-            // Pindahkan tombolnya
-            btnNo.style.left = randomX + 'px';
-            btnNo.style.top = randomY + 'px';
-        }
-    </script>
+    <!-- Script (semua JS di satu file terpisah) -->
+    <script src="script.js"></script>
 </body>
 
 </html>
