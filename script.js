@@ -1,7 +1,65 @@
 /* =============================================
-   BIRTHDAY GREETING - AMALIA NURUL
+   BIRTHDAY GREETING - AMALIA NURUL AZKIA
    Interactive JavaScript
    ============================================= */
+
+// =============================================
+// BACKGROUND MUSIC
+// =============================================
+let bgMusic = null;
+let musicPlaying = false;
+
+function initBackgroundMusic() {
+    bgMusic = document.getElementById('bgMusic');
+    if (!bgMusic) {
+        bgMusic = new Audio('music/birthday-music.mp3');
+        bgMusic.id = 'bgMusic';
+    }
+    bgMusic.loop = true;
+    bgMusic.volume = 0.2; // Volume 50%
+}
+
+function playBackgroundMusic() {
+    if (!bgMusic) initBackgroundMusic();
+    bgMusic.play().then(() => {
+        musicPlaying = true;
+        updateMusicButton();
+    }).catch(err => {
+        console.log('Autoplay dicegah browser, user perlu klik tombol musik.');
+    });
+}
+
+function toggleMusic() {
+    if (!bgMusic) initBackgroundMusic();
+
+    if (musicPlaying) {
+        bgMusic.pause();
+        musicPlaying = false;
+    } else {
+        bgMusic.play().then(() => {
+            musicPlaying = true;
+        }).catch(err => {
+            console.log('Gagal memutar musik:', err);
+        });
+    }
+    updateMusicButton();
+}
+
+function updateMusicButton() {
+    const btn = document.getElementById('musicToggleBtn');
+    if (!btn) return;
+    if (musicPlaying) {
+        btn.innerHTML = '🔊';
+        btn.title = 'Matikan Musik';
+        btn.classList.add('playing');
+        btn.classList.remove('muted');
+    } else {
+        btn.innerHTML = '🔇';
+        btn.title = 'Nyalakan Musik';
+        btn.classList.remove('playing');
+        btn.classList.add('muted');
+    }
+}
 
 // =============================================
 // PRELOADER
@@ -71,6 +129,9 @@ function startCelebration() {
     if (celebrationStarted) return;
     celebrationStarted = true;
 
+    // Play background music saat celebration dimulai
+    playBackgroundMusic();
+
     // Launch confetti
     launchConfetti();
 
@@ -84,7 +145,6 @@ function startCelebration() {
     setTimeout(() => {
         document.getElementById('wishes').scrollIntoView({ behavior: 'smooth' });
     }, 1000);
-
 }
 
 // =============================================
@@ -468,8 +528,6 @@ if (countdownSection) {
     countdownObserver.observe(countdownSection);
 }
 
-
-
 // =============================================
 // MOUSE TRAIL EFFECT
 // =============================================
@@ -534,16 +592,6 @@ window.addEventListener('resize', () => {
         confettiCanvas.height = window.innerHeight;
     }
 });
-
-// =============================================
-// INITIAL SCROLL CHECK
-// =============================================
-document.addEventListener('DOMContentLoaded', () => {
-    revealOnScroll();
-});
-
-console.log('🎂 Selamat Ulang Tahun, Amalia Nurul Azkia! 💖');
-console.log('🌹 Website ini dibuat dengan penuh cinta');
 
 // =============================================
 // LIGHTBOX (Photo Gallery)
@@ -623,3 +671,91 @@ document.addEventListener('keydown', (e) => {
 lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
 });
+
+// =============================================
+// POPUP NEMBAK (Confession Popup)
+// =============================================
+function bukaPopupNembak() {
+    document.getElementById('popupNembak').style.display = 'flex';
+}
+
+function terimaCinta() {
+    // Reaksi saat dia klik YES
+    alert("Yeyyy! Akhirnya kita jadian! I Love You Amalia! ❤️❤️❤️");
+    document.getElementById('popupNembak').style.display = 'none';
+}
+
+function kabur() {
+    const btnNo = document.getElementById('btnNo');
+
+    // Mengubah posisi tombol NO jadi fixed biar bisa terbang-terbang
+    btnNo.style.position = 'fixed';
+
+    // Hitung batas layar biar tombolnya gak keluar layar
+    const maxX = window.innerWidth - btnNo.offsetWidth - 20;
+    const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+
+    // Bikin posisi acak
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    // Pindahkan tombolnya
+    btnNo.style.left = randomX + 'px';
+    btnNo.style.top = randomY + 'px';
+}
+
+// =============================================
+// INITIAL SCROLL CHECK & MUSIC BUTTON STYLES
+// =============================================
+document.addEventListener('DOMContentLoaded', () => {
+    revealOnScroll();
+    initBackgroundMusic();
+
+    // Inject music toggle button styles
+    const musicBtnStyle = document.createElement('style');
+    musicBtnStyle.textContent = `
+        #musicToggleBtn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ff6eb4, #ff4081, #e91e8c);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 20px rgba(255, 64, 129, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+
+        #musicToggleBtn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 28px rgba(255, 64, 129, 0.7);
+        }
+
+        #musicToggleBtn.playing {
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+
+        #musicToggleBtn.muted {
+            animation: none;
+            opacity: 0.7;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(255, 64, 129, 0.5); }
+            50% { transform: scale(1.08); box-shadow: 0 6px 28px rgba(255, 64, 129, 0.7); }
+        }
+    `;
+    document.head.appendChild(musicBtnStyle);
+});
+
+console.log('🎂 Selamat Ulang Tahun, Amalia Nurul Azkia! 💖');
+console.log('🌹 Website ini dibuat dengan penuh cinta');
