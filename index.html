@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Selamat Ulang Tahun, Amalia Nurul Azkia! 🎂</title>
+    <meta name="description" content="Ucapan ulang tahun spesial untuk Amalia Nurul Azkia yang tercinta">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="gift-box">
+                <div class="gift-lid">
+                    <div class="gift-bow"></div>
+                </div>
+                <div class="gift-body"></div>
+            </div>
+            <div class="countdown-preloader" id="countdownPreloader">3</div>
+            <p class="loader-text" id="loaderText" style="display: none;">Menyiapkan kejutan...</p>
+        </div>
+    </div>
+
+    <!-- Floating Hearts Background -->
+    <div id="hearts-container"></div>
+
+    <!-- Sparkle particles -->
+    <canvas id="sparkle-canvas"></canvas>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="crown-icon">👑</div>
+            <p class="hero-subtitle fade-in">Selamat Ulang Tahun</p>
+            <h1 class="hero-name glow-text fade-in">Amalia Nurul Azkia</h1>
+            <div class="divider fade-in">
+                <span class="heart-divider">💖</span>
+            </div>
+            <p class="hero-date fade-in" id="birthday-date"></p>
+            <button class="cta-button fade-in" id="openBtn" onclick="startCelebration()">
+                <span>🎁</span> Buka Ucapan
+            </button>
+        </div>
+        <div class="scroll-indicator" id="scrollIndicator">
+            <div class="mouse">
+                <div class="mouse-wheel"></div>
+            </div>
+            <p>Scroll ke bawah</p>
+        </div>
+    </section>
+
+    <!-- Wishes Section -->
+    <section id="wishes" class="section">
+        <div class="section-inner">
+            <div class="wish-card glass-card reveal">
+                <div class="card-glow"></div>
+                <div class="wish-icon">🌹</div>
+                <h2 class="section-title">Doa & Harapan</h2>
+                <div class="wish-content">
+                    <p class="wish-text">
+                        Di hari yang spesial ini, aku ingin mengucapkan<br>
+                        <strong>Selamat Ulang Tahun</strong> yang penuh cinta untukmu.
+                    </p>
+                    <p class="wish-text">
+                        Semoga di tahun yang baru ini, Allah SWT senantiasa
+                        melimpahkan <em>kebahagiaan</em>, <em>kesehatan</em>,
+                        dan <em>keberkahan</em> dalam setiap langkahmu. 🤲
+                    </p>
+                    <p class="wish-text">
+                        Semoga segala <strong>impian</strong> dan <strong>cita-cita</strong>mu
+                        tercapai, dan setiap hari yang kamu jalani dipenuhi dengan
+                        senyuman dan kebahagiaan. ✨
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section id="message" class="section">
+        <div class="section-inner">
+            <div class="message-card glass-card reveal">
+                <div class="card-glow"></div>
+                <div class="quote-mark">"</div>
+                <h2 class="section-title">Pesan Spesial</h2>
+                <div class="typewriter-container">
+                    <p class="typewriter-text" id="typewriter"></p>
+                    <span class="cursor" id="cursor">|</span>
+                </div>
+                <div class="message-footer">
+                    <div class="heart-beat">💝</div>
+                    <p class="message-signature">Dengan penuh cinta & sayang</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cake Section -->
+    <section id="cake" class="section">
+        <div class="section-inner">
+            <h2 class="section-title reveal">🎂 Tiup Lilinnya! 🎂</h2>
+            <p class="cake-instruction reveal">Klik lilin untuk meniup dan membuat permohonan! 🌟</p>
+            <div class="cake-container reveal" id="cakeContainer">
+                <div class="cake">
+                    <!-- Candles -->
+                    <div class="candles">
+                        <div class="candle" onclick="blowCandle(this)">
+                            <div class="flame-container">
+                                <div class="flame"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle" onclick="blowCandle(this)">
+                            <div class="flame-container">
+                                <div class="flame"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle" onclick="blowCandle(this)">
+                            <div class="flame-container">
+                                <div class="flame"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle" onclick="blowCandle(this)">
+                            <div class="flame-container">
+                                <div class="flame"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle" onclick="blowCandle(this)">
+                            <div class="flame-container">
+                                <div class="flame"></div>
+                                <div class="flame-glow"></div>
+                            </div>
+                            <div class="candle-body"></div>
+                        </div>
+                    </div>
+                    <!-- Cake layers -->
+                    <div class="cake-top">
+                        <div class="cake-drip"></div>
+                        <div class="cake-drip"></div>
+                        <div class="cake-drip"></div>
+                        <div class="cake-drip"></div>
+                        <div class="cake-drip"></div>
+                    </div>
+                    <div class="cake-middle">
+                        <div class="cake-decoration">🌸</div>
+                        <div class="cake-decoration">💖</div>
+                        <div class="cake-decoration">🌸</div>
+                        <div class="cake-decoration">💖</div>
+                        <div class="cake-decoration">🌸</div>
+                    </div>
+                    <div class="cake-bottom">
+                        <div class="cake-decoration">✨</div>
+                        <div class="cake-decoration">🌹</div>
+                        <div class="cake-decoration">✨</div>
+                        <div class="cake-decoration">🌹</div>
+                        <div class="cake-decoration">✨</div>
+                        <div class="cake-decoration">🌹</div>
+                    </div>
+                    <div class="cake-plate"></div>
+                </div>
+            </div>
+            <div class="wish-made-message" id="wishMessage">
+                <h3>🌟 Semoga doamu dikabulkan! 🌟</h3>
+                <p>Selamat ulang tahun, Amalia Nurul Azkia! 🎉</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="section-inner gallery-wide">
+            <h2 class="section-title reveal">✨ Galeri Kenangan ✨</h2>
+            <p class="gallery-subtitle reveal">Setiap momen bersamamu adalah kenangan yang tak ternilai 💖</p>
+            <div class="photo-gallery reveal">
+                <div class="photo-item" style="--delay: 0.1s">
+                    <div class="photo-frame glass-card">
+                        <div class="photo-wrapper">
+                            <img src="img/foto1.jpeg" alt="Kenangan 1" loading="lazy">
+                        </div>
+                        <div class="photo-caption">
+                            <span class="caption-icon">🌸</span>
+                            <p>Senyummu yang selalu menerangi hari</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-item" style="--delay: 0.2s">
+                    <div class="photo-frame glass-card">
+                        <div class="photo-wrapper">
+                            <img src="img/foto2.jpeg" alt="Kenangan 2" loading="lazy">
+                        </div>
+                        <div class="photo-caption">
+                            <span class="caption-icon">✨</span>
+                            <p>Cantik dari luar dan dalam</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-item" style="--delay: 0.3s">
+                    <div class="photo-frame glass-card">
+                        <div class="photo-wrapper">
+                            <img src="img/foto3.jpeg" alt="Kenangan 3" loading="lazy">
+                        </div>
+                        <div class="photo-caption">
+                            <span class="caption-icon">💕</span>
+                            <p>Momen berharga yang takkan terlupakan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-item" style="--delay: 0.4s">
+                    <div class="photo-frame glass-card">
+                        <div class="photo-wrapper">
+                            <img src="img/foto4.jpeg" alt="Kenangan 4" loading="lazy">
+                        </div>
+                        <div class="photo-caption">
+                            <span class="caption-icon">🌹</span>
+                            <p>Secantik bunga yang mekar di musim semi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-item" style="--delay: 0.5s">
+                    <div class="photo-frame glass-card">
+                        <div class="photo-wrapper">
+                            <img src="img/foto5.jpeg" alt="Kenangan 5" loading="lazy">
+                        </div>
+                        <div class="photo-caption">
+                            <span class="caption-icon">🦋</span>
+                            <p>Keindahan yang tak pernah pudar</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-item" style="--delay: 0.6s">
+                    <div class="photo-frame glass-card">
+                        <div class="photo-wrapper">
+                            <img src="img/foto6.jpeg" alt="Kenangan 6" loading="lazy">
+                        </div>
+                        <div class="photo-caption">
+                            <span class="caption-icon">👑</span>
+                            <p>Selalu bersinar dimanapun kamu berada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</button>
+        <div class="lightbox-content">
+            <img src="" alt="Photo" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <!-- Countdown / Age Counter Section -->
+    <section id="countdown" class="section">
+        <div class="section-inner">
+            <h2 class="section-title reveal">🕐 Hitungan Waktu 🕐</h2>
+            <div class="countdown-grid reveal">
+                <div class="countdown-item glass-card">
+                    <span class="countdown-number" id="count-days">0</span>
+                    <span class="countdown-label">Hari Berlalu</span>
+                    <span class="countdown-sub">di tahun ini</span>
+                </div>
+                <div class="countdown-item glass-card">
+                    <span class="countdown-number" id="count-hours">0</span>
+                    <span class="countdown-label">Jam</span>
+                    <span class="countdown-sub">kebahagiaan</span>
+                </div>
+                <div class="countdown-item glass-card">
+                    <span class="countdown-number" id="count-minutes">0</span>
+                    <span class="countdown-label">Menit</span>
+                    <span class="countdown-sub">kebersamaan</span>
+                </div>
+                <div class="countdown-item glass-card">
+                    <span class="countdown-number" id="count-seconds">0</span>
+                    <span class="countdown-label">Detik</span>
+                    <span class="countdown-sub">berharga</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="section">
+        <div class="section-inner">
+            <div class="footer-content reveal">
+                <div class="footer-hearts">
+                    <span>💖</span><span>💗</span><span>💝</span><span>💖</span><span>💗</span>
+                </div>
+                <h2 class="footer-title">Selamat Ulang Tahun!</h2>
+                <p class="footer-name">Amalia Nurul Azkia</p>
+                <p class="footer-message">Semoga harimu selalu menyenangkan dan penuh berkah 🌸</p>
+                <div class="footer-divider"></div>
+                <p class="footer-credit">Dibuat dengan 💖 only for u sweety</p>
+            </div>
+        </div>
+    </footer>
+        <div style="margin-top: 30px; text-align: center;">
+    <button onclick="bukaPopupNembak()" style="
+        background-color: #ff4d94;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 5px 15px rgba(255, 77, 148, 0.4);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    " 
+    onmouseover="this.style.transform='scale(1.1)'" 
+    onmouseout="this.style.transform='scale(1)'">
+        KLIK INI
+    </button>
+</div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+
+
+    <script src="script.js"></script>
+    <div id="popupNembak" style="
+        display: none; 
+        position: fixed; 
+        top: 0; left: 0; width: 100%; height: 100%; 
+        background: rgba(0,0,0,0.8); 
+        z-index: 99999; /* Biar posisinya paling depan nutupin semua */
+        justify-content: center; 
+        align-items: center; 
+        text-align: center;
+        backdrop-filter: blur(5px);
+    ">
+        <div style="
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 40px 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 0 30px #ff4d94; 
+            position: relative; 
+            max-width: 80%;
+            width: 350px;
+        ">
+            <h2 style="color: #ff4d94; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-size: 24px;">Hai, Amalia Nurul Azkia...</h2>
+            <p style="color: #333; font-family: 'Poppins', sans-serif; margin-bottom: 30px; font-size: 16px;">
+                Selama ini aku ngerasa nyaman banget sama kamu. <br><br>
+                <strong>Will you be my girlfriend? 🥺❤️</strong>
+            </p>
+            
+            <div style="position: relative; height: 50px; width: 100%; display: flex; justify-content: center; gap: 20px;">
+                <button onclick="terimaCinta()" style="
+                    background: #ff4d94; color: white; border: none; 
+                    padding: 10px 35px; border-radius: 20px; 
+                    cursor: pointer; font-size: 18px; font-weight: bold;
+                    box-shadow: 0 4px 10px rgba(255, 77, 148, 0.4);
+                ">YES</button>
+                
+                <button id="btnNo" onmouseover="kabur()" ontouchstart="kabur()" style="
+                    background: #999; color: white; border: none; 
+                    padding: 10px 35px; border-radius: 20px; 
+                    cursor: pointer; font-size: 18px; font-weight: bold;
+                    position: relative; transition: 0.1s;
+                ">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function bukaPopupNembak() {
+            document.getElementById('popupNembak').style.display = 'flex';
+        }
+
+        function terimaCinta() {
+            // Reaksi saat dia klik YES
+            alert("Yeyyy! Akhirnya kita jadian! I Love You Amalia! ❤️❤️❤️");
+            document.getElementById('popupNembak').style.display = 'none';
+            // Kalau mau efek ledakan confetti, biarin dia nikmatin websitenya
+        }
+
+        function kabur() {
+            const btnNo = document.getElementById('btnNo');
+            
+            // Mengubah posisi tombol NO jadi absolute biar bisa terbang-terbang
+            btnNo.style.position = 'fixed';
+            
+            // Hitung batas layar biar tombolnya gak keluar layar
+            const maxX = window.innerWidth - btnNo.offsetWidth - 20;
+            const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+            
+            // Bikin posisi acak
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            // Pindahkan tombolnya
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+        }
+    </script>
+</body>
+
+</html>
